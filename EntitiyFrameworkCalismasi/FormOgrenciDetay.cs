@@ -40,10 +40,15 @@ namespace EntitiyFrameworkCalismasi
                 radioButton2.Checked = true;
             }
 
+            var bolumler = context.bolum.Find(ogr.bolumId);
+            
+
             var fakulte = context.fakulte.ToList();
             comboBox1.DataSource = fakulte;
             comboBox1.DisplayMember = "fakulteAdi";
             comboBox1.ValueMember = "fakulteId";
+
+            comboBox1.SelectedValue = bolumler.fakulteId;
 
             var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBox1.SelectedValue).ToList();
             comboBox2.DataSource = bolum;
