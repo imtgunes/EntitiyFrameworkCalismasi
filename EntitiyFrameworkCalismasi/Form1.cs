@@ -37,5 +37,12 @@ namespace EntitiyFrameworkCalismasi
                 dataGridViewOgr.DataSource = context.ogrenci.ToList();
             }
         }
+
+        private void buttonOgrEkle_Click(object sender, EventArgs e)
+        {
+            OgrenciEkle ogrenciEkle = new OgrenciEkle();
+            ogrenciEkle.Show();
+
+        }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.dataGridViewOgr = new System.Windows.Forms.DataGridView();
+            this.buttonOgrEkle = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOgr)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,11 +44,22 @@
             this.dataGridViewOgr.TabIndex = 0;
             this.dataGridViewOgr.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOgr_CellClick);
             // 
+            // buttonOgrEkle
+            // 
+            this.buttonOgrEkle.Location = new System.Drawing.Point(37, 338);
+            this.buttonOgrEkle.Name = "buttonOgrEkle";
+            this.buttonOgrEkle.Size = new System.Drawing.Size(106, 23);
+            this.buttonOgrEkle.TabIndex = 1;
+            this.buttonOgrEkle.Text = "Ogrenci Ekle";
+            this.buttonOgrEkle.UseVisualStyleBackColor = true;
+            this.buttonOgrEkle.Click += new System.EventHandler(this.buttonOgrEkle_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.buttonOgrEkle);
             this.Controls.Add(this.dataGridViewOgr);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -61,5 +73,6 @@
         #endregion
 
         private DataGridView dataGridViewOgr;
+        private Button buttonOgrEkle;
     }
 }
