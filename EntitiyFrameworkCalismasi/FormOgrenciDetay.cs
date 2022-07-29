@@ -44,18 +44,18 @@ namespace EntitiyFrameworkCalismasi
             
 
             var fakulte = context.fakulte.ToList();
-            comboBox1.DataSource = fakulte;
-            comboBox1.DisplayMember = "fakulteAdi";
-            comboBox1.ValueMember = "fakulteId";
+            comboBoxFakulte.DataSource = fakulte;
+            comboBoxFakulte.DisplayMember = "fakulteAdi";
+            comboBoxFakulte.ValueMember = "fakulteId";
 
-            comboBox1.SelectedValue = bolumler.fakulteId;
+            comboBoxFakulte.SelectedValue = bolumler.fakulteId;
 
-            var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBox1.SelectedValue).ToList();
-            comboBox2.DataSource = bolum;
-            comboBox2.DisplayMember = "bolumAdi";
-            comboBox2.ValueMember = "bolumId";
+            var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBoxFakulte.SelectedValue).ToList();
+            comboBoxBolum.DataSource = bolum;
+            comboBoxBolum.DisplayMember = "bolumAdi";
+            comboBoxBolum.ValueMember = "bolumId";
 
-            comboBox2.SelectedValue = ogr.bolumId;
+            comboBoxBolum.SelectedValue = ogr.bolumId;
 
 
         }
@@ -83,7 +83,7 @@ namespace EntitiyFrameworkCalismasi
                 ogr.donem = 0;
             }
             
-            ogr.bolumId = (int)comboBox2.SelectedValue; 
+            ogr.bolumId = (int)comboBoxBolum.SelectedValue; 
 
             context.SaveChanges();
 
@@ -113,10 +113,10 @@ namespace EntitiyFrameworkCalismasi
         {
             using Context context = new Context();
 
-            var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBox1.SelectedValue).ToList();
-            comboBox2.DataSource = bolum;
-            comboBox2.DisplayMember = "bolumAdi";
-            comboBox2.ValueMember = "bolumId";
+            var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBoxFakulte.SelectedValue).ToList();
+            comboBoxBolum.DataSource = bolum;
+            comboBoxBolum.DisplayMember = "bolumAdi";
+            comboBoxBolum.ValueMember = "bolumId";
         }
     }
 }

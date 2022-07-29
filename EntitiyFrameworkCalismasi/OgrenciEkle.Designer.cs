@@ -40,8 +40,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.textBoxOgrSınıfE = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.comboBox2E = new System.Windows.Forms.ComboBox();
-            this.comboBox1E = new System.Windows.Forms.ComboBox();
+            this.comboBoxBolumE = new System.Windows.Forms.ComboBox();
+            this.comboBoxFakulteE = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxOgrTlfNoE = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -161,22 +161,22 @@
             this.label7.TabIndex = 42;
             this.label7.Text = "Bölüm";
             // 
-            // comboBox2E
+            // comboBoxBolumE
             // 
-            this.comboBox2E.FormattingEnabled = true;
-            this.comboBox2E.Location = new System.Drawing.Point(529, 64);
-            this.comboBox2E.Name = "comboBox2E";
-            this.comboBox2E.Size = new System.Drawing.Size(224, 23);
-            this.comboBox2E.TabIndex = 41;
+            this.comboBoxBolumE.FormattingEnabled = true;
+            this.comboBoxBolumE.Location = new System.Drawing.Point(529, 64);
+            this.comboBoxBolumE.Name = "comboBoxBolumE";
+            this.comboBoxBolumE.Size = new System.Drawing.Size(224, 23);
+            this.comboBoxBolumE.TabIndex = 41;
             // 
-            // comboBox1E
+            // comboBoxFakulteE
             // 
-            this.comboBox1E.FormattingEnabled = true;
-            this.comboBox1E.Location = new System.Drawing.Point(529, 23);
-            this.comboBox1E.Name = "comboBox1E";
-            this.comboBox1E.Size = new System.Drawing.Size(226, 23);
-            this.comboBox1E.TabIndex = 40;
-            this.comboBox1E.SelectionChangeCommitted += new System.EventHandler(this.comboBox1E_SelectionChangeCommitted);
+            this.comboBoxFakulteE.FormattingEnabled = true;
+            this.comboBoxFakulteE.Location = new System.Drawing.Point(529, 23);
+            this.comboBoxFakulteE.Name = "comboBoxFakulteE";
+            this.comboBoxFakulteE.Size = new System.Drawing.Size(226, 23);
+            this.comboBoxFakulteE.TabIndex = 40;
+            this.comboBoxFakulteE.SelectionChangeCommitted += new System.EventHandler(this.comboBox1E_SelectionChangeCommitted);
             // 
             // label6
             // 
@@ -295,8 +295,8 @@
             this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxOgrSınıfE);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.comboBox2E);
-            this.Controls.Add(this.comboBox1E);
+            this.Controls.Add(this.comboBoxBolumE);
+            this.Controls.Add(this.comboBoxFakulteE);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxOgrTlfNoE);
             this.Controls.Add(this.label5);
@@ -330,8 +330,8 @@
         private Label label8;
         private TextBox textBoxOgrSınıfE;
         private Label label7;
-        private ComboBox comboBox2E;
-        private ComboBox comboBox1E;
+        private ComboBox comboBoxBolumE;
+        private ComboBox comboBoxFakulteE;
         private Label label6;
         private TextBox textBoxOgrTlfNoE;
         private Label label5;
