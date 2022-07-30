@@ -23,7 +23,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Bolum",
+                name: "bolum",
                 columns: table => new
                 {
                     bolumId = table.Column<int>(type: "int", nullable: false)
@@ -33,9 +33,9 @@ namespace EntitiyFrameworkCalismasi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Bolum", x => x.bolumId);
+                    table.PrimaryKey("PK_bolum", x => x.bolumId);
                     table.ForeignKey(
-                        name: "FK_Bolum_fakulte_fakulteId",
+                        name: "FK_bolum_fakulte_fakulteId",
                         column: x => x.fakulteId,
                         principalTable: "fakulte",
                         principalColumn: "fakulteId",
@@ -52,7 +52,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
                     ogrenciSoyadi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     kimlikNo = table.Column<int>(type: "int", nullable: false),
                     ogrenciNo = table.Column<int>(type: "int", nullable: false),
-                    telefonNo = table.Column<int>(type: "int", nullable: false),
+                    telefonNo = table.Column<int>(type: "int", nullable: true),
                     adres = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     donem = table.Column<int>(type: "int", nullable: false),
                     sinif = table.Column<int>(type: "int", nullable: false),
@@ -64,16 +64,16 @@ namespace EntitiyFrameworkCalismasi.Migrations
                 {
                     table.PrimaryKey("PK_ogrenci", x => x.ogrenciId);
                     table.ForeignKey(
-                        name: "FK_ogrenci_Bolum_bolumId",
+                        name: "FK_ogrenci_bolum_bolumId",
                         column: x => x.bolumId,
-                        principalTable: "Bolum",
+                        principalTable: "bolum",
                         principalColumn: "bolumId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Bolum_fakulteId",
-                table: "Bolum",
+                name: "IX_bolum_fakulteId",
+                table: "bolum",
                 column: "fakulteId");
 
             migrationBuilder.CreateIndex(
@@ -88,7 +88,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
                 name: "ogrenci");
 
             migrationBuilder.DropTable(
-                name: "Bolum");
+                name: "bolum");
 
             migrationBuilder.DropTable(
                 name: "fakulte");

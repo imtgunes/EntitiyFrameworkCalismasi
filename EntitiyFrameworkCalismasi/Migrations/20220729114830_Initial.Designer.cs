@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EntitiyFrameworkCalismasi.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220728200142_Initial")]
+    [Migration("20220729114830_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
 
                     b.HasIndex("fakulteId");
 
-                    b.ToTable("Bolum");
+                    b.ToTable("bolum");
                 });
 
             modelBuilder.Entity("EntitiyFrameworkCalismasi.Models.Fakulte", b =>
@@ -104,7 +104,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
                     b.Property<int>("sinif")
                         .HasColumnType("int");
 
-                    b.Property<int>("telefonNo")
+                    b.Property<int?>("telefonNo")
                         .HasColumnType("int");
 
                     b.HasKey("ogrenciId");

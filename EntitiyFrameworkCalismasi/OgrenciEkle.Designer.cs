@@ -309,6 +309,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "OgrenciEkle";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OgrenciEkle";
             this.Load += new System.EventHandler(this.OgrenciEkle_Load);
             this.ResumeLayout(false);

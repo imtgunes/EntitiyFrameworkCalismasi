@@ -41,7 +41,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
 
                     b.HasIndex("fakulteId");
 
-                    b.ToTable("Bolum");
+                    b.ToTable("bolum");
                 });
 
             modelBuilder.Entity("EntitiyFrameworkCalismasi.Models.Fakulte", b =>
@@ -102,7 +102,7 @@ namespace EntitiyFrameworkCalismasi.Migrations
                     b.Property<int>("sinif")
                         .HasColumnType("int");
 
-                    b.Property<int>("telefonNo")
+                    b.Property<int?>("telefonNo")
                         .HasColumnType("int");
 
                     b.HasKey("ogrenciId");

@@ -35,6 +35,8 @@
             // 
             // dataGridViewOgr
             // 
+            this.dataGridViewOgr.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewOgr.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewOgr.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOgr.Location = new System.Drawing.Point(32, 12);
@@ -46,7 +48,8 @@
             // 
             // buttonOgrEkle
             // 
-            this.buttonOgrEkle.Location = new System.Drawing.Point(37, 338);
+            this.buttonOgrEkle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOgrEkle.Location = new System.Drawing.Point(682, 415);
             this.buttonOgrEkle.Name = "buttonOgrEkle";
             this.buttonOgrEkle.Size = new System.Drawing.Size(106, 23);
             this.buttonOgrEkle.TabIndex = 1;
@@ -62,6 +65,7 @@
             this.Controls.Add(this.buttonOgrEkle);
             this.Controls.Add(this.dataGridViewOgr);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Activated += new System.EventHandler(this.Form1_Activated);
             this.Load += new System.EventHandler(this.Form1_Load);

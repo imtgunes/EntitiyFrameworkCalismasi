@@ -12,15 +12,18 @@ namespace EntitiyFrameworkCalismasi
 {
     public partial class OgrenciEkle : Form
     {
+        Ogrenci yeniOgrenci;
+        Context context;
+
         public OgrenciEkle()
         {
             InitializeComponent();
+            context = new Context();
+            yeniOgrenci = new Ogrenci();
         }
 
         private void buttonEkle_Click(object sender, EventArgs e)
         {
-            using Context context = new Context();
-            Ogrenci yeniOgrenci = new Ogrenci();
             yeniOgrenci.kimlikNo = Convert.ToInt32(textBoxOgrKimlikE.Text);
             yeniOgrenci.girisTarihi = dateTimePickerOgrGTarihiE.Value;
             yeniOgrenci.dogumTarihi = dateTimePickerOgrDTarihiE.Value;
@@ -29,7 +32,15 @@ namespace EntitiyFrameworkCalismasi
             yeniOgrenci.ogrenciAdi = textBoxOgrAdE.Text;
             yeniOgrenci.ogrenciSoyadi = textBoxOgrSoyadE.Text;
             yeniOgrenci.ogrenciNo = Convert.ToInt32(textBoxOgrNoE.Text);
-            yeniOgrenci.telefonNo = Convert.ToInt32(textBoxOgrTlfNoE.Text);
+            if (!String.IsNullOrEmpty(textBoxOgrTlfNoE.Text))
+            {
+                yeniOgrenci.telefonNo = Convert.ToInt32(textBoxOgrTlfNoE.Text);
+            }
+            else
+            {
+                yeniOgrenci.telefonNo = null;
+            }
+            
             yeniOgrenci.sinif = Convert.ToInt32(textBoxOgrSınıfE.Text);
             if (radioButton1E.Checked == true)
             {
@@ -48,7 +59,6 @@ namespace EntitiyFrameworkCalismasi
 
         private void OgrenciEkle_Load(object sender, EventArgs e)
         {
-            using Context context = new Context();
             var fakulte = context.fakulte.ToList();
             comboBoxFakulteE.DataSource = fakulte;
             comboBoxFakulteE.DisplayMember = "fakulteAdi";
@@ -62,7 +72,6 @@ namespace EntitiyFrameworkCalismasi
 
         private void comboBox1E_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            using Context context = new Context();
 
             var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBoxFakulteE.SelectedValue).ToList();
             comboBoxBolumE.DataSource = bolum;

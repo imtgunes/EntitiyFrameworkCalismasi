@@ -13,16 +13,18 @@ namespace EntitiyFrameworkCalismasi
     public partial class FormOgrenciDetay : Form
     {
         public int ogrID;
+        Ogrenci ogr;
+        Context context;
         public FormOgrenciDetay(int ogrID)
         {
             InitializeComponent();
+            context = new Context();
             this.ogrID = ogrID;
+            ogr = context.ogrenci.Find(ogrID);
         }
 
         private void FormOgrenciDetay_Load(object sender, EventArgs e)
         {
-            using Context context = new Context();
-            var ogr = context.ogrenci.Find(ogrID);
             textBoxOgrAd.Text = ogr.ogrenciAdi;
             textBoxOgrNo.Text = ogr.ogrenciNo.ToString();
             textBoxOgrSoyad.Text = ogr.ogrenciSoyadi;
@@ -62,14 +64,20 @@ namespace EntitiyFrameworkCalismasi
 
         private void buttonKaydet_Click(object sender, EventArgs e)
         {
-            using Context context = new Context();
-            var ogr = context.ogrenci.Find(ogrID);
             ogr.ogrenciAdi = textBoxOgrAd.Text;
             ogr.ogrenciSoyadi = textBoxOgrSoyad.Text;
             ogr.ogrenciNo = Convert.ToInt32(textBoxOgrNo.Text);
             ogr.kimlikNo = Convert.ToInt32(textBoxOgrKimlik.Text);
             ogr.adres = textBoxOgrAdres.Text;
-            ogr.telefonNo = Convert.ToInt32(textBoxOgrTlfNo.Text);
+            if (!String.IsNullOrEmpty(textBoxOgrTlfNo.Text))
+            {
+                ogr.telefonNo = Convert.ToInt32(textBoxOgrTlfNo.Text);
+            }
+            else
+            {
+                ogr.telefonNo = null;
+            }
+            
             ogr.sinif = Convert.ToInt32(textBoxOgrSınıf.Text);
             ogr.dogumTarihi = dateTimePickerOgrDTarihi.Value;
             ogr.girisTarihi = dateTimePickerOgrGTarihi.Value;
@@ -95,8 +103,6 @@ namespace EntitiyFrameworkCalismasi
 
         private void buttonSil_Click(object sender, EventArgs e)
         {
-            using Context context = new Context();
-            var ogr = context.ogrenci.Find(ogrID);
             context.ogrenci.Remove(ogr);
             context.SaveChanges();
             MessageBox.Show("Başarıyla silindi");
@@ -111,8 +117,6 @@ namespace EntitiyFrameworkCalismasi
 
         private void comboBox1_SelectionChangeCommitted(object sender, EventArgs e)
         {
-            using Context context = new Context();
-
             var bolum = context.bolum.Where(b => b.fakulteId == (int)comboBoxFakulte.SelectedValue).ToList();
             comboBoxBolum.DataSource = bolum;
             comboBoxBolum.DisplayMember = "bolumAdi";

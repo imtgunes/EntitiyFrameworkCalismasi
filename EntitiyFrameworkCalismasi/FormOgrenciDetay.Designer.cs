@@ -333,6 +333,7 @@
             this.Controls.Add(this.buttonVazgec);
             this.Controls.Add(this.buttonKaydet);
             this.Name = "FormOgrenciDetay";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FormOgrenciDetay";
             this.Load += new System.EventHandler(this.FormOgrenciDetay_Load);
             this.ResumeLayout(false);

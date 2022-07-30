@@ -14,7 +14,7 @@ namespace EntitiyFrameworkCalismasi.Models
         public int kimlikNo { get; set; }
         public int ogrenciNo { get; set; }
 
-        public int telefonNo { get; set; }
+        public int? telefonNo { get; set; }
         public string adres { get; set; }
 
         public int donem { get; set; }
