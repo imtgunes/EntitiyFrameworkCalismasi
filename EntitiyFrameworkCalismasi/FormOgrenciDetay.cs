@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 using EntitiyFrameworkCalismasi.Models;
 namespace EntitiyFrameworkCalismasi
 {
@@ -21,10 +22,15 @@ namespace EntitiyFrameworkCalismasi
             context = new Context();
             this.ogrID = ogrID;
             ogr = context.ogrenci.Find(ogrID);
+           
         }
-
+       
         private void FormOgrenciDetay_Load(object sender, EventArgs e)
         {
+            this.BackColor = Properties.Settings.Default.ArkaPlanRengi;
+
+            this.Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), Properties.Settings.Default.FontBoyutu);
+
             textBoxOgrAd.Text = ogr.ogrenciAdi;
             textBoxOgrNo.Text = ogr.ogrenciNo.ToString();
             textBoxOgrSoyad.Text = ogr.ogrenciSoyadi;
@@ -58,7 +64,6 @@ namespace EntitiyFrameworkCalismasi
             comboBoxBolum.ValueMember = "bolumId";
 
             comboBoxBolum.SelectedValue = ogr.bolumId;
-
 
         }
 

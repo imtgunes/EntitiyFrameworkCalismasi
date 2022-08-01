@@ -59,6 +59,9 @@ namespace EntitiyFrameworkCalismasi
 
         private void OgrenciEkle_Load(object sender, EventArgs e)
         {
+            this.BackColor = Properties.Settings.Default.ArkaPlanRengi;
+            this.Font = new Font(new FontFamily(System.Drawing.Text.GenericFontFamilies.Serif), Properties.Settings.Default.FontBoyutu);
+
             var fakulte = context.fakulte.ToList();
             comboBoxFakulteE.DataSource = fakulte;
             comboBoxFakulteE.DisplayMember = "fakulteAdi";

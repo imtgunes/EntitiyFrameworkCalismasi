@@ -1,24 +1,30 @@
 using EntitiyFrameworkCalismasi.Models;
 namespace EntitiyFrameworkCalismasi
 {
-    public partial class Form1 : Form
+    public partial class Anasayfa : Form
     {
         public int counter;
         Ogrenci ogr;
         Context context;
-        public Form1()
+
+        public Anasayfa()
         {
             InitializeComponent();
             context = new Context();
-            
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            using Context context = new Context();
-            dataGridViewOgr.DataSource = context.ogrenci.ToList();
 
-
+            this.BackColor = Properties.Settings.Default.ArkaPlanRengi;
+            var bilgiler =
+                 from ogrnc in context.ogrenci
+                 join bol in context.bolum on ogrnc.bolumId equals bol.bolumId
+                 join fa in context.fakulte on bol.fakulteId equals fa.fakulteId
+                 select new { ogrnc.ogrenciId, ogrnc.ogrenciAdi, ogrnc.ogrenciSoyadi, ogrnc.kimlikNo, ogrnc.ogrenciNo, ogrnc.telefonNo, ogrnc.adres, ogrnc.sinif, ogrnc.dogumTarihi, ogrnc.girisTarihi, bol.bolumAdi, fa.fakulteAdi, ogrnc.bolum, ogrnc.bolumId, ogrnc.donem };
+            
+            dataGridViewOgr.DataSource = bilgiler.ToList();
+            
             DataGridViewButtonColumn btn = new DataGridViewButtonColumn();
             dataGridViewOgr.Columns.Add(btn);
             btn.HeaderText = "Sil";
@@ -35,12 +41,20 @@ namespace EntitiyFrameworkCalismasi
 
             this.dataGridViewOgr.Columns["Bolum"].Visible = false;
             this.dataGridViewOgr.Columns["bolumId"].Visible = false;
+            this.dataGridViewOgr.Columns["donem"].Visible = false;
+            this.dataGridViewOgr.Columns["fakulteAdi"].MinimumWidth = 130;
+
+
+            dataGridViewBolumler.DataSource = context.bolum.ToList();
+            this.dataGridViewBolumler.Columns["Fakulte"].Visible = false;
+            dataGridViewFakülteler.DataSource = context.fakulte.ToList();
         }
 
 
        
         private void dataGridViewOgr_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            
             if (e.ColumnIndex == -1)
             {
                 FormOgrenciDetay formOgrenciDetay = new FormOgrenciDetay((int)dataGridViewOgr.Rows[e.RowIndex].Cells[2].Value);
@@ -54,7 +68,7 @@ namespace EntitiyFrameworkCalismasi
                 MessageBox.Show("Baþarýyla silindi");
 
             }
-            else if (e.ColumnIndex == 13)
+            else if (e.ColumnIndex == 15)
             {
                 ogr = context.ogrenci.Find((int)dataGridViewOgr.Rows[e.RowIndex].Cells[0].Value);
                 context.ogrenci.Remove(ogr);
@@ -65,10 +79,8 @@ namespace EntitiyFrameworkCalismasi
             {
                 FormOgrenciDetay formOgrenciDetay = new FormOgrenciDetay((int)dataGridViewOgr.Rows[e.RowIndex].Cells[2].Value);
                 formOgrenciDetay.Show();
-
-
             }
-            else if (e.ColumnIndex == 14)
+            else if (e.ColumnIndex == 16)
             {
                 FormOgrenciDetay formOgrenciDetay = new FormOgrenciDetay((int)dataGridViewOgr.Rows[e.RowIndex].Cells[0].Value);
                 formOgrenciDetay.Show();
@@ -81,8 +93,13 @@ namespace EntitiyFrameworkCalismasi
             counter++;
             if(counter > 1)
             {
-                using Context context = new Context();
-                dataGridViewOgr.DataSource = context.ogrenci.ToList();
+                this.BackColor = Properties.Settings.Default.ArkaPlanRengi;
+                var bilgiler =
+                 from ogrnc in context.ogrenci
+                 join bol in context.bolum on ogrnc.bolumId equals bol.bolumId
+                 join fa in context.fakulte on bol.fakulteId equals fa.fakulteId
+                 select new { ogrnc.ogrenciId, ogrnc.ogrenciAdi, ogrnc.ogrenciSoyadi, ogrnc.kimlikNo, ogrnc.ogrenciNo, ogrnc.telefonNo, ogrnc.adres, ogrnc.sinif, ogrnc.dogumTarihi, ogrnc.girisTarihi, bol.bolumAdi, fa.fakulteAdi, ogrnc.bolum, ogrnc.bolumId, ogrnc.donem };
+                dataGridViewOgr.DataSource = bilgiler.ToList();
             }
         }
 
@@ -91,6 +108,12 @@ namespace EntitiyFrameworkCalismasi
             OgrenciEkle ogrenciEkle = new OgrenciEkle();
             ogrenciEkle.Show();
 
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Ayarlar ayarlar = new Ayarlar();
+            ayarlar.Show();
         }
     }
 }
